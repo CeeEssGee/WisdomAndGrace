@@ -25,6 +25,8 @@ namespace WisdomAndGrace
             services.AddTransient<IUserProfileRepository, UserProfileRepository>();
             services.AddTransient<IQuoteRepository, QuoteRepository>();
 
+
+            // ?? JWT authentication
             var firebaseProjectId = Configuration.GetValue<string>("FirebaseProjectId");
             var googleTokenUrl = $"https://securetoken.google.com/{firebaseProjectId}";
             services
@@ -48,6 +50,7 @@ namespace WisdomAndGrace
             {
                 c.SwaggerDoc("v1", new OpenApiInfo { Title = "WisdomAndGrace", Version = "v1" });
 
+                // ?? JWT Authorization
                 var securitySchema = new OpenApiSecurityScheme
                 {
                     Name = "Authorization",
@@ -84,6 +87,7 @@ namespace WisdomAndGrace
 
             app.UseRouting();
 
+            // ?? Authentication/Authorization
             app.UseAuthentication();
             app.UseAuthorization();
 

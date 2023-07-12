@@ -6,6 +6,7 @@ using WisdomAndGrace.Repositories;
 
 namespace WisdomAndGrace.Controllers
 {
+    // ?? Authorize
     [Authorize]
     [Route("api/[controller]")]
     [ApiController]
@@ -39,6 +40,7 @@ namespace WisdomAndGrace.Controllers
             return Ok(quote);
         }
 
+        // ??
         [HttpPost]
         public IActionResult Post(Quote quote)
         {
@@ -52,6 +54,7 @@ namespace WisdomAndGrace.Controllers
             return CreatedAtAction(nameof(Get), new { id = quote.Id }, quote);
         }
 
+        // ?? GetCurrentUserProfile
         private UserProfile GetCurrentUserProfile()
         {
             var firebaseUserId = User.FindFirst(ClaimTypes.NameIdentifier).Value;

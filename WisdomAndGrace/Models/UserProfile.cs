@@ -6,6 +6,7 @@ namespace WisdomAndGrace.Models
     {
         public int Id { get; set; }
 
+        // ?? FirebaseUserId
         [Required]
         [StringLength(28, MinimumLength = 28)]
         public string FirebaseUserId { get; set; }
